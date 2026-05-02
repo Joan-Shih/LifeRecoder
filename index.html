@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>LifeRecoder</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="header">
+    <div class="tab-group">
+      <button class="tab-btn active" id="tab-life" onclick="switchMode('life')">人生週曆</button>
+      <button class="tab-btn" id="tab-residency" onclick="switchMode('residency')">住院醫師週曆</button>
+    </div>
+    <div class="header-actions">
+      <button class="settings-btn" onclick="openSettings()">⚙ 設定</button>
+      <button class="all-notes-btn" id="all-notes-btn" onclick="toggleAllNotes()">All Notes</button>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="grid-area" id="grid-area">
+      <div class="mode-label" id="mode-label"></div>
+      <div class="blocks-container" id="blocks-container"></div>
+    </div>
+  </div>
+
+  <!-- Floating note / all-notes panel -->
+  <div class="float-panel" id="float-panel"></div>
+
+  <!-- Settings Modal -->
+  <div class="modal-overlay" id="settings-modal" onclick="closeSettingsOnOverlay(event)">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">個人設定</div>
+        <button class="modal-close" onclick="closeSettings()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="setting-section">
+          <div class="setting-label">出生日期</div>
+          <div class="setting-row">
+            <input type="date" id="birth-date-input" class="date-input">
+            <button class="fill-btn" onclick="autoFillLife()">自動填入人生週曆</button>
+          </div>
+          <div class="setting-hint">將自動填滿從出生至今的所有週</div>
+        </div>
+        <div class="setting-section">
+          <div class="setting-label">住院醫師開始日期</div>
+          <div class="setting-row">
+            <input type="date" id="residency-start-input" class="date-input">
+            <button class="fill-btn" onclick="autoFillResidency()">自動填入住院醫師週曆</button>
+          </div>
+          <div class="setting-hint">將自動填滿從開始至今的所有天</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

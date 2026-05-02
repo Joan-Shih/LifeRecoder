@@ -1,0 +1,36 @@
+{
+  "name": "liferecoder",
+  "version": "1.0.0",
+  "description": "Life & Residency Progress Tracker",
+  "main": "main.js",
+  "scripts": {
+    "start": "ELECTRON_RUN_AS_NODE= electron .",
+    "build:mac": "electron-builder --mac",
+    "build:win": "electron-builder --win"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^33.4.11",
+    "electron-builder": "^26.8.1"
+  },
+  "build": {
+    "appId": "com.liferecoder.app",
+    "productName": "LifeRecoder",
+    "files": [
+      "main.js",
+      "preload.cjs",
+      "index.html",
+      "renderer.js",
+      "styles.css"
+    ],
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.productivity"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
